@@ -1,8 +1,16 @@
+import 'package:api_calling/screen/api/provider/api_provider.dart';
 import 'package:api_calling/screen/api/view/api_screen.dart';
+import 'package:api_calling/screen/wallpaper/provider/wallpaper_provider.dart';
+import 'package:api_calling/screen/wallpaper/view/wallpaper_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main(){
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => TODOProvider(),),
+    ChangeNotifierProvider(create: (context) => HomeProvider(),),
+  ],
+  child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ApiScreen(),
+      home: WallPaperScreen(),
     );
   }
 }

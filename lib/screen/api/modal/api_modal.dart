@@ -1,26 +1,18 @@
-// import 'dart:convert';
-// import 'dart:developer';
-//
-// import 'package:http/http.dart';
-// class ApiService {
-//   String url = 'https://...';
-//
-//   Future<void> apiCall() async {
-//     // Response response = await http.get(
-//     //     Uri.parse(url)
-//     // );
-//
-//     if (response.statusCode == 200) {
-//       log('Success');
-//       // prints String data by skipping all json decoding process
-//       List l1 = jsonDecode(response.body);
-//       print(l1[0]);
-//     }
-//     else {
-//       log('Failed!');
-//     }
-//   }
-// }
-//
-//
-//
+
+class TodoModal {
+  String? title;
+  int? id, userId;
+  bool? completed;
+
+  TodoModal({this.completed, this.id, this.title, this.userId});
+
+  factory TodoModal.fromJson(Map json) {
+    return TodoModal(
+      completed: json['completed'],
+      id: json['id'],
+      title: json['title'],
+      userId: json['userId'],
+
+    );
+  }
+}
